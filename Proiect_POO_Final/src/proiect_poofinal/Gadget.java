@@ -33,6 +33,7 @@ public void AfisareStoc(){
 
    
 
+
     @Override
     public String toString() {
         return "Brandul               " + brand + "\n"+"culoarea              " + culoare + "\n"+"starea produsului     " + stare+"\n"
