@@ -1,4 +1,4 @@
-package proiect_poo;
+package proiect_poofinal;
 
 import java.util.Random;
 
