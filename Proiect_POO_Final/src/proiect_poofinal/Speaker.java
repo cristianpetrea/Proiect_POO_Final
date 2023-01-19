@@ -19,7 +19,7 @@ public class Speaker extends Gadget {
  
     }
 
-    public Speaker(String brand,String culoare,String stare,String garantie, float pret,int stoc,boolean onTheEar, boolean hasMicrophone, boolean operationalSystem, int frequency, int chargingTime) {
+    public Speaker(String brand,String culoare,String stare,int garantie, float pret,int stoc,boolean onTheEar, boolean hasMicrophone, boolean operationalSystem, int frequency, int chargingTime) {
         super(brand,culoare,stare,garantie,pret,stoc);
         this.onTheEar = onTheEar;
         this.hasMicrophone = hasMicrophone;
