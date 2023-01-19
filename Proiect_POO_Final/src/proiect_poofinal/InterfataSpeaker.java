@@ -11,7 +11,7 @@ import java.io.*;
 
 
 
-public class InterfataSpeaker {
+public class Interfata {
 	
 	public static ArrayList<Speaker> listaSpeaker;
 	public static ArrayList<Speaker> listaFiltrataSpeaker;
@@ -168,7 +168,7 @@ public class InterfataSpeaker {
 
 	public static void main(String[] args) {
 	
-	InterfataSpeaker s = new InterfataSpeaker();
+		Interfata s = new Interfata();
        
 	}
 }
