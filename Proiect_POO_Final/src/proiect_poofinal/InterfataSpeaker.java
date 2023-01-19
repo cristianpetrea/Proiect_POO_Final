@@ -17,7 +17,7 @@ public class InterfataSpeaker {
 	public static ArrayList<Speaker> listaFiltrataSpeaker;
 	
 	
-	Interfata() {
+	InterfataSpeaker() {
  //Caseta Text
         JTextArea casetaText = new JTextArea();
         casetaText.setEditable(false);
