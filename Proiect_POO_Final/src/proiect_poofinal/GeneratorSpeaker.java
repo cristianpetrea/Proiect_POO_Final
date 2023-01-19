@@ -10,7 +10,7 @@ public class GeneratorSpeaker {
 
     static private String[] stare = { "Nou", "Vechi" };
 
-    static private String[] garantie = {"2","4 "};
+    static private int[] garantie = {2, 4, 6, 8, 9};
 
     static private float[] pret = { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
 
@@ -33,7 +33,7 @@ public class GeneratorSpeaker {
             String brandCasca = brand[new Random().nextInt(brand.length)];
             String culoareCasca = culoare[new Random().nextInt(culoare.length)];
             String stareCasca = stare[new Random().nextInt(stare.length)];
-            String garantieCasca = garantie[new Random().nextInt(garantie.length)];
+            int garantieCasca = garantie[new Random().nextInt(garantie.length)];
             float pretSpeaker = pret[new Random().nextInt(pret.length)];
             int stocSpeaker = stoc[new Random().nextInt(stoc.length)];
             boolean onTheEarSpeaker = onTheEar[new Random().nextInt(onTheEar.length)];
