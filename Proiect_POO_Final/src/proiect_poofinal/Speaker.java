@@ -86,3 +86,4 @@ public class Speaker extends Gadget {
         this.chargingTime = chargingTime;
     }
 }
+ 
