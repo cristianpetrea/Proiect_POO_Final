@@ -17,7 +17,7 @@ public class TestGeneratorSpeaker {
         // initierea unui obiect de tip Speaker
         // prin apel constructor cu parametrii
 
-        Speaker speakerMele = new Speaker("Samsung", "negru", "nou", "2", 299.99f,
+        Speaker speakerMele = new Speaker("Samsung", "negru", "nou", 2, 299.99f,
                 12, true, false, true, 2600, 30);
         speakerMele.AfisarePret();
         speakerMele.AfisareStoc();
