@@ -33,10 +33,11 @@ public void AfisareStoc(){
 
    
 
+
     @Override
     public String toString() {
         return "Brandul               " + brand + "\n"+"culoarea              " + culoare + "\n"+"starea produsului     " + stare+"\n"
-                + "pretul de             " + pret + " lei \n" + "garantie de           " + garantie + " ani \n";
+                + "pretul de             " + pret + " lei \n" + "garantie de           " + garantie + " ani ";
     }
 
 }
