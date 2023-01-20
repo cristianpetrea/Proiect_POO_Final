@@ -46,7 +46,7 @@ GenereazaSpeaker.setBounds(620, 700, 200, 30);
 JButton GenereazaCasti = new JButton("Genereaza Casti");
 GenereazaCasti.setBounds(320, 700, 200, 30);
 JButton Filtrare2 = new JButton("Filtreaza dupa frecventa");
-Filtrare2.setBounds(620, 800, 200, 30)
+Filtrare2.setBounds(620, 800, 200, 30);
 
 // Adauga un listener pentru buton
 
