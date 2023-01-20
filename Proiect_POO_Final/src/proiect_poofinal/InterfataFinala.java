@@ -47,3 +47,411 @@ JButton GenereazaCasti = new JButton("Genereaza Casti");
 GenereazaCasti.setBounds(320, 700, 200, 30);
 JButton Filtrare2 = new JButton("Filtreaza dupa frecventa");
 Filtrare2.setBounds(620, 800, 200, 30)
+
+// Adauga un listener pentru buton
+
+saveButton.addActionListener(new ActionListener() {
+
+    public void actionPerformed(ActionEvent e) {
+
+        // Creeaza un obiect File pentru fisierul in care se va salva textul
+
+        File file = new File("ListaGenerata.txt");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+
+            // Scrie continutul campului de text in fisier
+
+            writer.write(textArea.getText());
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+    }
+
+});
+
+
+
+        // Adauga un listener pentru buton
+
+        saveButton2.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+                // Creeaza un obiect File pentru fisierul in care se va salva textul
+
+                File file = new File("ListaGenerataGenerata.txt");
+
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+
+                    // Scrie continutul campului de text in fisier
+
+                    writer.write(textArea.getText());
+
+                } catch (IOException ex) {
+
+                    ex.printStackTrace();
+
+                }
+
+            }
+
+        });
+
+
+
+JButton clearButton = new JButton("Golire ListaGenerata.txt");
+
+clearButton.setBounds(500,450,250,30);
+
+// Adauga un listener pentru buton
+
+clearButton.addActionListener(new ActionListener() {
+
+    public void actionPerformed(ActionEvent e) {
+
+        // Creeaza un obiect File pentru fisierul care se va sterge
+
+        File file = new File("ListaGenerata.txt");
+
+        try (PrintWriter writer = new PrintWriter(file)) {
+
+            // Goleste continutul fisierului
+
+            writer.print("");
+
+        } catch (FileNotFoundException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+    }
+
+});
+
+clearButton2.addActionListener(new ActionListener() {
+
+    public void actionPerformed(ActionEvent e) {
+
+        // Creeaza un obiect File pentru fisierul care se va sterge
+
+        File file = new File("ListaFiltrataGenerata.txt");
+
+        try (PrintWriter writer = new PrintWriter(file)) {
+
+            // Goleste continutul fisierului
+
+            writer.print("");
+
+        } catch (FileNotFoundException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+    }
+
+});
+
+
+
+
+
+JButton genereazaBT = new JButton("Genereaza MiniCamere");
+
+genereazaBT.setBounds(20, 700, 200, 30);
+
+
+
+genereazaBT.addActionListener(new ActionListnerGenerareDate(){
+
+
+
+    @Override
+
+    public void actionPerformed(ActionEvent e) {
+
+
+
+       listaCamere = GeneratorMiniCamere.genereazaRandomCamere(1);
+
+       
+
+        textArea.setText(" " +listaCamere);
+
+
+
+
+    }
+
+
+
+});
+
+
+
+
+GenereazaCasti.addActionListener(new ActionListenerGeneratorDateC(){
+
+
+
+    @Override
+
+    public void actionPerformed(ActionEvent e) {
+
+
+
+       listaCasti = GeneratorCasti.genereazaNisteCasti(1);
+
+       
+
+        textArea.setText(" " +listaCasti);
+
+
+
+
+    }
+
+
+
+});
+
+
+
+GenereazaSpeaker.addActionListener(new ActiuneListaGenerareDate(){
+
+ 
+
+    @Override
+
+    public void actionPerformed(ActionEvent e) {
+
+
+
+       listaSpeaker = GeneratorSpeaker.genereazaNisteSpeaker(1);
+
+       
+
+       textArea.setText(" " +listaSpeaker);
+
+
+
+
+    }
+
+
+
+});
+
+JTextField Sistem = new  JTextField();
+
+Sistem.setBounds(20,750,200,30);
+
+JTextField Sistem2 = new  JTextField();
+
+Sistem2.setBounds(320,750,200,30);
+
+JTextField Sistem3 = new  JTextField();
+
+Sistem3.setBounds(620,750,200,30);
+
+
+
+
+JButton btnClear = new JButton("Clear");
+
+
+
+btnClear.addActionListener(new ActionListener(){
+
+
+
+    @Override
+
+    public void actionPerformed(ActionEvent e) {
+
+ 
+
+        textArea.setText(" ");
+
+    }
+
+
+
+
+
+});
+
+btnClear.setBounds(40,340,800,40);
+
+
+
+
+
+JButton genereazaBT2 = new JButton("Filtreaza dupa Sistem ");
+
+genereazaBT2.setBounds(20, 800, 200, 30);
+
+
+
+
+genereazaBT2.addActionListener(new ActionListnerFiltrareDate()
+
+
+
+{
+
+    public void actionPerformed(ActionEvent e)
+
+    {  
+
+        ArrayList<MiniCamere> listaCamere = new ArrayList<MiniCamere>();
+
+        listaCamere = GeneratorMiniCamere.genereazaRandomCamere(10);
+
+        listaMiniCamere = SortareMiniCamere.filtreazaDupaSistemedeOperare(listaCamere, Sistem.getText());
+
+        textArea.setText(" " +listaMiniCamere);
+
+   
+
+   
+
+
+
+    }
+
+});
+
+Filtrare.addActionListener(new ActionListnerFiltrareDate()
+
+
+
+{
+
+    @Override
+
+    public void actionPerformed(ActionEvent e) {
+
+
+
+        ArrayList<Casti> listaInitCasti = new ArrayList<Casti>();
+
+        listaCasti = GeneratorCasti.genereazaNisteCasti(1);
+
+        listaInitCasti = CastiFilter.filtreazaDupaPutere(listaCasti, Integer.parseInt(Sistem2.getText()));
+
+        textArea.setText(" " + listaInitCasti);
+
+    }
+
+});
+
+
+
+Filtrare2.addActionListener(new ActiuneListaFiltrare()
+
+
+
+{
+
+    public void actionPerformed(ActionEvent e)
+
+    {  
+
+        ArrayList<Speaker> listaSpeaker = new ArrayList<Speaker>();
+
+        listaSpeaker = GeneratorSpeaker.genereazaNisteSpeaker(10);
+
+        listaFiltrataSpeaker = SpeakerFilter.filtreazaDupaFrecventa(listaSpeaker,Integer.parseInt(Sistem3.getText()));
+
+        textArea.setText(" " +listaFiltrataSpeaker);
+
+   
+
+   
+
+
+
+    }
+
+});
+
+
+
+
+
+
+//implementari in interfata
+
+frame.add(Sistem2);
+
+frame.add(Sistem3);
+
+frame.add(Filtrare2);
+
+frame.add(GenereazaCasti);
+
+frame.add(GenereazaSpeaker);
+
+frame.add(clearButton2);
+
+frame.add(saveButton2);
+
+frame.add(Sistem);
+
+frame.add(Filtrare);
+
+frame.add(clearButton);
+
+frame.add(genereazaBT);
+
+frame.add(textArea);
+
+frame.add(btnClear);
+
+frame.add(genereazaBT2);
+
+frame.add(saveButton);
+
+frame.setSize(900, 900);
+
+frame.setTitle("Interfata Grafica");
+
+frame.setLayout(null);
+
+frame.setVisible(true);
+
+frame.setResizable(false);
+
+frame.add(scrollPane);
+
+
+
+
+
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+   
+
+        InterfataFinala s = new InterfataFinala();
+
+       
+
+    }
+
+
+
+
+}	
