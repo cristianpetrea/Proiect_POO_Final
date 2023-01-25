@@ -53,19 +53,23 @@ public class TestInterfataC {
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Salvare");
         JMenu menu2 = new JMenu("Golire");
+        JMenu menu3 = new JMenu("Citire");
 
         JMenuItem menuItem = new JMenuItem("Salvare in fisierul CastiGenerate.txt");
         JMenuItem menuItem2 = new JMenuItem("Salvare in fisierul CastiFiltrate.txt");
         JMenuItem menuItem3 = new JMenuItem("Golire fisierul CastiGenerate.txt");
         JMenuItem menuItem4 = new JMenuItem("Golire fisierul CastiFiltrate.txt");
+        JMenuItem menuitem5 = new JMenuItem("Citire din fisierul CastiScrise.txt");
 
         menu.add(menuItem);
         menu.add(menuItem2);
         menu2.add(menuItem3);
         menu2.add(menuItem4);
+        menu3.add(menuitem5);
 
         menuBar.add(menu);
         menuBar.add(menu2);
+        menuBar.add(menu3);
 
         frame.setJMenuBar(menuBar);
 
@@ -160,6 +164,21 @@ public class TestInterfataC {
 
             }
 
+        });
+
+        menuitem5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent s) {
+                try (BufferedReader br = new BufferedReader(new FileReader("CastiScrise.txt"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        textArea.append(line + "\n");
+                    }
+                    textArea.setFont(new Font("Arial", Font.PLAIN, 29));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
         });
 
         Filtrare.addActionListener(new ActionListnerFiltrareDateC() {
