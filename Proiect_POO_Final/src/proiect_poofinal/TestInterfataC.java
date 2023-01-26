@@ -54,26 +54,22 @@ public class TestInterfataC {
         JMenu menu = new JMenu("Salvare");
         JMenu menu2 = new JMenu("Golire");
         JMenu menu3 = new JMenu("Citire");
-        JMenu menu4 = new JMenu("Import");
 
         JMenuItem menuItem = new JMenuItem("Salvare in fisierul CastiGenerate.txt");
         JMenuItem menuItem2 = new JMenuItem("Salvare in fisierul CastiFiltrate.txt");
         JMenuItem menuItem3 = new JMenuItem("Golire fisierul CastiGenerate.txt");
         JMenuItem menuItem4 = new JMenuItem("Golire fisierul CastiFiltrate.txt");
         JMenuItem menuitem5 = new JMenuItem("Citire din fisierul CastiScrise.txt");
-        JMenuItem menuitem6 = new JMenuItem("Importeaza fisier");
 
         menu.add(menuItem);
         menu.add(menuItem2);
         menu2.add(menuItem3);
         menu2.add(menuItem4);
         menu3.add(menuitem5);
-        menu4.add(menuitem6);
 
         menuBar.add(menu);
         menuBar.add(menu2);
         menuBar.add(menu3);
-        menuBar.add(menu4);
 
         frame.setJMenuBar(menuBar);
 
@@ -132,22 +128,6 @@ public class TestInterfataC {
             }
         });
 
-        menuitem6.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            try {
-                textArea.read(new java.io.FileReader(selectedFile.getAbsolutePath()), null);
-            } catch (IOException ex) {
-                System.out.println("File not found");
-            }
-            textArea.setEditable(false);
-        }
-    }
-        });
-
         genereazaBT.addActionListener(new ActionListenerGeneratorDateC() {
 
             @Override
@@ -176,16 +156,18 @@ public class TestInterfataC {
         genereazaBT2.addActionListener(new ActionListnerFiltrareDateC() {
 
             public void actionPerformed(ActionEvent e) {
-
-                ArrayList<Casti> listaCasti2 = new ArrayList<Casti>();
-                listaCasti = GeneratorCasti.genereazaNisteCasti(10);
-                listaCasti2 = CastiFilter.filtreazaDupaTip(listaCasti, Sistem.getText());
-                textArea.setText(" " + listaCasti2);
-
+                try {
+                    ArrayList<Casti> listaCasti2 = new ArrayList<Casti>();
+                    listaCasti = GeneratorCasti.genereazaNisteCasti(10);
+                    listaCasti2 = CastiFilter.filtreazaDupaTip(listaCasti, Sistem.getText());
+                    textArea.setText(" " + listaCasti2);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Introduceti un tip de casti valid!");
+                }
             }
 
         });
-        
+
         menuitem5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent s) {
                 try (BufferedReader br = new BufferedReader(new FileReader("CastiScrise.txt"))) {
@@ -203,13 +185,15 @@ public class TestInterfataC {
 
         Filtrare.addActionListener(new ActionListnerFiltrareDateC() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
-
-                ArrayList<Casti> listaInitCasti = new ArrayList<Casti>();
-                listaCasti = GeneratorCasti.genereazaNisteCasti(1);
-                listaInitCasti = CastiFilter.filtreazaDupaPutere(listaCasti, Integer.parseInt(Sistem2.getText()));
-                textArea.setText(" " + listaInitCasti);
+                try {
+                    ArrayList<Casti> listaInitCasti = new ArrayList<Casti>();
+                    listaCasti = GeneratorCasti.genereazaNisteCasti(1);
+                    listaInitCasti = CastiFilter.filtreazaDupaPutere(listaCasti, Integer.parseInt(Sistem2.getText()));
+                    textArea.setText(" " + listaInitCasti);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Introduceti un numar intreg!");
+                }
             }
 
         });
