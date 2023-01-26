@@ -19,7 +19,16 @@ public class InterfataFinala {
 
     InterfataFinala() {
 
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu3 = new JMenu("Citire");
+        JMenuItem menuitem5 = new JMenuItem("Citire din fisierul CastiScrise.txt");
+        JMenuItem menuitem4 = new JMenuItem("Citire din fisierul file.txt");
+        JMenuItem menuitem3 = new JMenuItem("Citire din fisierul filetext.txt");
 
+        menu3.add(menuitem5);
+        menu3.add(menuitem3);
+        menu3.add(menuitem4);
+        menuBar.add(menu3);
         // Creeaza un textarea
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
@@ -158,7 +167,48 @@ clearButton2.addActionListener(new ActionListener() {
 
 });
 
+menuitem5.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent s) {
+        try (BufferedReader br = new BufferedReader(new FileReader("CastiScrise.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                textArea.append(line + "\n");
+            }
+            textArea.setFont(new Font("Arial", Font.PLAIN, 29));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
+});
+menuitem4.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent s) {
+        try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                textArea.append(line + "\n");
+            }
+            textArea.setFont(new Font("Arial", Font.PLAIN, 29));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+});
+menuitem3.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent s) {
+        try (BufferedReader br = new BufferedReader(new FileReader("filetext.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                textArea.append(line + "\n");
+            }
+            textArea.setFont(new Font("Arial", Font.PLAIN, 29));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+});
 
 
 
@@ -431,6 +481,7 @@ frame.setResizable(false);
 
 frame.add(scrollPane);
 
+frame.setJMenuBar(menuBar);
 
 
 
