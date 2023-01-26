@@ -1,0 +1,12 @@
+-Design compact
+-Rezolutie video: 1920 x 1080 (30 fps) / 1280 x 720 (30fps)
+-Rezolutie foto: 5 MP (4023 x 3024)
+-Unghi filmare: 150 grade
+-Detectia Miscarii
+-Wireless
+-Night vision
+-Interfata USB 2.0
+-Format video: AVI
+-Codificare video: M-JPEG
+-Format foto: JPG
+-Sistem suportat: Windows me/ 2000/ XP/ 2003/ Vista, Mac OS, Linux
