@@ -143,12 +143,28 @@ public class InterfataSpeaker {
             }
         });
         
-        
+         JButton FileRead = new JButton("Read file");
+            FileRead.setBounds(600,600,200,30);
+
+            FileRead.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent s){
+        try (BufferedReader br = new BufferedReader(new FileReader("textfile.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                casetaText.append(line + "\n");
+            }
+            casetaText.setFont(new Font("Arial", Font.PLAIN, 24));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+        }
+    });
 
 		
 //implementari in interfata
        
-
+	frame.add(FileRead);
 		frame.add(Filtrare2);
         frame.add(ButonSalvareListaFiltrata);
         frame.add(Text);
