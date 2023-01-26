@@ -173,12 +173,28 @@ public class InterfataMiniCamere {
         });
         
         
+        JButton CitireFisier = new JButton("Citire fisier");
+        CitireFisier.setBounds(600,600,200,30);
 
+        CitireFisier.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent s){
+        try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                textArea.append(line + "\n");
+            }
+            textArea.setFont(new Font("Arial", Font.PLAIN, 24));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+        }
+    });
 
 	
 		
 //implementari in interfata
-       
+       frame.add(CitireFisier);
         frame.add(clearButton2);
         frame.add(saveButton2);
         frame.add(Sistem);
