@@ -177,7 +177,7 @@ public class InterfataMiniCamere {
         });
         
         
-        JButton CitireFisier = new JButton("Citire fisier");
+        JButton CitireFisier = new JButton("Import");
         CitireFisier.setBounds(600,600,200,30);
 
         CitireFisier.addActionListener(e -> {
