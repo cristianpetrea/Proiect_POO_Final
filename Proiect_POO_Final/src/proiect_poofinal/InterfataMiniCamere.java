@@ -22,7 +22,7 @@ public class InterfataMiniCamere {
         // Creeaza un textarea
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
-		textArea.setFont(new Font("Arial", Font.PLAIN, 24));
+		textArea.setFont(new Font("Arial", Font.PLAIN, 25));
         // Seteaza pozitia si marimea textarea-ului
         textArea.setBounds(400, 60, 400, 270);
 
@@ -150,25 +150,29 @@ public class InterfataMiniCamere {
             { 	
                 ArrayList<MiniCamere> listaCamere = new ArrayList<MiniCamere>();
                 listaCamere = GeneratorMiniCamere.genereazaRandomCamere(10);
-                listaMiniCamere = SortareMiniCamere.filtreazaDupaSistemedeOperare(listaCamere, Sistem.getText());
-                textArea.setText(" " +listaMiniCamere);
+
+                if (Sistem.getText().isEmpty()) {
+                    textArea.setText(" ");
+                } else {
+                    listaMiniCamere = SortareMiniCamere.filtreazaDupaSistemedeOperare(listaCamere,Sistem.getText());
+                    textArea.setText(" " +listaMiniCamere);
+                }
             
            
   
             }
         });
-        Filtrare.addActionListener(new ActionListnerFiltrareDate()
-
-        {
-            public void actionPerformed(ActionEvent e) 
-            { 	
+        Filtrare.addActionListener(new ActionListnerFiltrareDate() {
+            public void actionPerformed(ActionEvent e) { 	
                 ArrayList<MiniCamere> listaCamere = new ArrayList<MiniCamere>();
                 listaCamere = GeneratorMiniCamere.genereazaRandomCamere(10);
-                listaMiniCamere = SortareMiniCamere.filtreazaDupaGreutate(listaCamere, Integer.parseInt(Sistem2.getText()));
-                textArea.setText(" " +listaMiniCamere);
-            
-           
-  
+        
+                if (Sistem2.getText().isEmpty()) {
+                    textArea.setText(" ");
+                } else {
+                    listaMiniCamere = SortareMiniCamere.filtreazaDupaGreutate(listaCamere, Integer.parseInt(Sistem2.getText()));
+                    textArea.setText(" " +listaMiniCamere);
+                }
             }
         });
         
