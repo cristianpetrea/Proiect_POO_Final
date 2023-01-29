@@ -110,15 +110,19 @@ public class InterfataSpeaker {
 
         
 //Buton filtrare dupa Frecventa
-        Filtrare2.addActionListener(new ActiuneListaFiltrare()
+      Filtrare2.addActionListener(new ActiuneListaFiltrare()
 
         {
             public void actionPerformed(ActionEvent e) 
-            { 	
+            {     
                 ArrayList<Speaker> listaSpeaker = new ArrayList<Speaker>();
                 listaSpeaker = GeneratorSpeaker.genereazaNisteSpeaker(10);
-                listaFiltrataSpeaker = SpeakerFilter.filtreazaDupaFrecventa(listaSpeaker,Integer.parseInt(Text.getText()));
-                casetaText.setText(" " +listaFiltrataSpeaker);
+                if (Text.getText().isEmpty()) {
+                    casetaText.setText(" ");
+                } else {
+                    listaFiltrataSpeaker = SpeakerFilter.filtreazaDupaFrecventa(listaSpeaker, Integer.parseInt(Text.getText()));
+                    casetaText.setText(" " +listaFiltrataSpeaker);
+                }
             
            
   
@@ -128,15 +132,20 @@ public class InterfataSpeaker {
 
 //Buton filtrare dupa Timpul de Incarcare        
         
-        Filtrare.addActionListener(new ActiuneListaFiltrare()
+     Filtrare.addActionListener(new ActiuneListaFiltrare()
 
         {
             public void actionPerformed(ActionEvent e) 
-            { 	
+            {     
                 ArrayList<Speaker> listaSpeaker = new ArrayList<Speaker>();
                 listaSpeaker = GeneratorSpeaker.genereazaNisteSpeaker(10);
-                listaFiltrataSpeaker = SpeakerFilter.filtreazaDupaIncarcare(listaSpeaker, Integer.parseInt(Text2.getText()));
-                casetaText.setText(" " +listaFiltrataSpeaker);
+
+                if (Text2.getText().isEmpty()) {
+                    casetaText.setText(" ");
+                } else {
+                    listaFiltrataSpeaker = SpeakerFilter.filtreazaDupaIncarcare(listaSpeaker, Integer.parseInt(Text2.getText()));
+                    casetaText.setText(" " +listaFiltrataSpeaker);
+                }
             
            
   
@@ -146,20 +155,27 @@ public class InterfataSpeaker {
          JButton FileRead = new JButton("Read file");
             FileRead.setBounds(600,600,200,30);
 
-            FileRead.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent s){
-        try (BufferedReader br = new BufferedReader(new FileReader("textfile.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                casetaText.append(line + "\n");
-            }
-            casetaText.setFont(new Font("Arial", Font.PLAIN, 24));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+              FileRead.addActionListener(e -> {
+ 
+                JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showOpenDialog(null); 
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
     
-        }
-    });
+                    try {
+             
+                        BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
+                       
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            casetaText.append(line + "\n");
+                        }  
+                        reader.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
 
 		
 //implementari in interfata
